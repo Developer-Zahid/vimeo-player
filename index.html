@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vimeo Player</title>
+</head>
+<body>
+
+    <!-- <div class="video-list">
+        <figure class="video-item">
+            <video controls loop="true" playsinline="" muted="true">
+                <source src="./videos/test-video.mp4">
+            </video>
+        </figure>
+        <figure class="video-item">
+            <video controls loop="true" playsinline="" muted="true">
+                <source src="./videos/pin-1.mp4">
+            </video>
+        </figure>
+    </div> -->
+
+    <div class="video-list">
+        <figure class="video-item">
+            <iframe src="https://player.vimeo.com/video/875642579?h=273c8d60f0&autoplay=1&loop=1" width="640" height="853" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </figure>
+        <figure class="video-item">
+            <iframe src="https://player.vimeo.com/video/875645539?h=ab16447bd1&autoplay=1&loop=1" width="640" height="1138" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </figure>
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- <script src="https://player.vimeo.com/api/player.js"></script> -->
+
+    <script type="text/javascript" src="./plugins/vimeo/js/jquery.vimeo.api.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Way 1
+            // $('.video-item iframe').each(function(index, item){
+            //     const currentIframe = item.contentWindow
+            //     console.log(currentIframe);
+            //     $(this).on('mouseover', function () {
+            //         currentIframe.postMessage('{"method":"play"}', '*')
+            //     })
+            //     $(this).on('mouseout', function () {
+            //         currentIframe.postMessage('{"method":"pause"}', '*')
+            //     })
+            // })
+
+            $('.video-item iframe').each(function(index, item){
+                $(this).on('mouseover', ()=> {
+                    $(this).vimeo("play");
+                })
+                $(this).on('mouseout', ()=> {
+                    $(this).vimeo("pause");
+                })
+            })
+
+
+
+            // var iframe = document.querySelector('iframe');
+            // var player = new Vimeo.Player(iframe);
+
+            // player.play().then(function () {
+            //     console.log('Video is playing');
+            // }).catch(function (error) {
+            //     console.error('Play failed', error);
+            // });
+        });
+    </script>
+</body>
+</html>
