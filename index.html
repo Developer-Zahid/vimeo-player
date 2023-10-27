@@ -7,18 +7,18 @@
 </head>
 <body>
 
-    <!-- <div class="video-list">
+    <div class="video-list">
         <figure class="video-item">
             <video controls loop="true" playsinline="" muted="true">
-                <source src="./videos/test-video.mp4">
+                <source src="./videos/test-video.mp4" type="video/mp4">
             </video>
         </figure>
         <figure class="video-item">
             <video controls loop="true" playsinline="" muted="true">
-                <source src="./videos/pin-1.mp4">
+                <source src="./videos/test-video.mp4" type="video/mp4">
             </video>
         </figure>
-    </div> -->
+    </div>
 
     <div class="video-list">
         <figure class="video-item">
@@ -54,6 +54,17 @@
                 })
                 $(this).on('mouseout', ()=> {
                     $(this).vimeo("pause");
+                })
+            })
+
+            $('.video-item video').each(function(index, item){
+                $(this).on('mouseover', ()=> {
+                    $(this).get(0).play()
+                    $(this).get(0).muted = false
+                })
+                $(this).on('mouseout', ()=> {
+                    $(this).get(0).pause()
+                    $(this).get(0).muted = true
                 })
             })
 
