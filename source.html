@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vimeo Player</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <nav>
+        <a href="./index.html">With vimeo iframe</a>
+        <a href="./source.html" class="active">With vimeo source video</a>
+    </nav>
+    <div class="media-list">
+        <figure class="media-figure">
+            <video class="media-figure__bg" poster="https://project.takemore.photos/wp-content/uploads/2023/10/@claudiacardos-min.jpg" muted="true" loop="" playsinline="">
+                <source src="./videos/test-video.mp4" type="video/mp4">
+            </video>
+        </figure>
+        <figure class="media-figure">
+            <video class="media-figure__bg" poster="https://project.takemore.photos/wp-content/uploads/2023/10/@claudiacardos-min.jpg" muted="true" loop="" playsinline="">
+                <source src="./videos/test-video.mp4" type="video/mp4">
+            </video>
+        </figure>
+        <figure class="media-figure">
+            <video class="media-figure__bg" poster="https://project.takemore.photos/wp-content/uploads/2023/10/@claudiacardos-min.jpg" muted="true" loop="" playsinline="">
+                <source src="https://project.takemore.photos/wp-content/uploads/2023/09/@ramybouh10_02.mp4" type="video/mp4">
+            </video>
+        </figure>
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            // Way 3
+            $('.media-figure').each(function(index, item){
+                const currentVideoElement = $(this).find('video').get(0)
+                $(this).on('mouseover', ()=> {
+                    currentVideoElement.autoplay = true
+                    currentVideoElement.play()
+                    currentVideoElement.muted = false
+                })
+                $(this).on('mouseout', ()=> {
+                    currentVideoElement.autoplay = false
+                    currentVideoElement.muted = true
+                    currentVideoElement.pause()
+                })
+            })
+        });
+    </script>
+</body>
+</html>

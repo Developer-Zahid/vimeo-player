@@ -8,22 +8,10 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-
-    <div class="vh-100"></div>
-
-    <div class="media-list">
-        <figure class="media-figure">
-            <video class="media-figure__bg" poster="https://project.takemore.photos/wp-content/uploads/2023/10/@claudiacardos-min.jpg" muted="true" loop="" playsinline="" preload="auto">
-                <source src="./videos/test-video.mp4" type="video/mp4">
-            </video>
-        </figure>
-        <figure class="media-figure">
-            <video class="media-figure__bg" poster="https://project.takemore.photos/wp-content/uploads/2023/10/@claudiacardos-min.jpg" muted="true" loop="" playsinline="" preload="auto">
-                <source src="https://project.takemore.photos/wp-content/uploads/2023/09/@ramybouh10_02.mp4" type="video/mp4">
-            </video>
-        </figure>
-    </div>
-<!-- 
+    <nav>
+        <a href="./index.html" class="active">With vimeo iframe</a>
+        <a href="./source.html">With vimeo source video</a>
+    </nav>
     <div class="media-list">
         <figure class="media-figure">
             <iframe class="media-figure__bg" src="https://player.vimeo.com/video/875642579?h=273c8d60f0&loop=1" frameborder="0" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -31,62 +19,36 @@
         <figure class="media-figure">
             <iframe class="media-figure__bg" src="https://player.vimeo.com/video/875645539?h=ab16447bd1&loop=1" frameborder="0" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
         </figure>
-        <figure class="media-figure">
-            <iframe class="media-figure__bg" src="https://player.vimeo.com/video/128947850?title=0&amp;byline=0&amp;portrait=0&amp;color=f2f2ea&amp;api=1&amp;player_id=vvvvimeoVideo-0" width="500" height="281" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-        </figure>
     </div>
-     -->
+    
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <!-- <script src="https://player.vimeo.com/api/player.js"></script> -->
-
-    <!-- <script type="text/javascript" src="./plugins/vimeo/js/jquery.vimeo.api.min.js"></script> -->
+    <!-- Start: Way 2 script -->
+    <script type="text/javascript" src="./plugins/vimeo/js/jquery.vimeo.api.min.js"></script>
+    <!-- End: Way 2 script -->
     <script>
         $(document).ready(function () {
             // Way 1
-            // $('.media-figure iframe').each(function(index, item){
-            //     const currentIframe = item.contentWindow
-            //     console.log(currentIframe);
+            // $('.media-figure').each(function(index, item){
+            //     let currentIframeElement = item.querySelector('iframe').contentWindow
             //     $(this).on('mouseover', function () {
-            //         currentIframe.postMessage('{"method":"play"}', '*')
+            //         currentIframeElement.postMessage('{"method":"play"}', '*')
             //     })
             //     $(this).on('mouseout', function () {
-            //         currentIframe.postMessage('{"method":"pause"}', '*')
+            //         currentIframeElement.postMessage('{"method":"pause"}', '*')
             //     })
             // })
-
-            // $('.media-figure iframe').each(function(index, item){
-            //     $(this).on('mouseover', ()=> {
-            //         $(this).vimeo("play");
-            //     })
-            //     $(this).on('mouseout', ()=> {
-            //         $(this).vimeo("pause");
-            //     })
-            // })
-
-            $('.media-figure video').each(function(index, item){
+            
+            // Way 2
+            $('.media-figure').each(function(index, item){
+                const currentIframeElement = $(this).find('iframe')
                 $(this).on('mouseover', ()=> {
-                    $(this).get(0).play()
-                    $(this).get(0).autoplay = true
-                    $(this).get(0).muted = false
+                    currentIframeElement.vimeo("play");
                 })
                 $(this).on('mouseout', ()=> {
-                    $(this).get(0).pause()
-                    $(this).get(0).autoplay = false
-                    $(this).get(0).muted = true
+                    currentIframeElement.vimeo("pause");
                 })
             })
-
-
-
-            // var iframe = document.querySelector('iframe');
-            // var player = new Vimeo.Player(iframe);
-
-            // player.play().then(function () {
-            //     console.log('Video is playing');
-            // }).catch(function (error) {
-            //     console.error('Play failed', error);
-            // });
         });
     </script>
 </body>
