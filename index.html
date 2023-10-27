@@ -4,28 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vimeo Player</title>
+
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
-    <div class="video-list">
-        <figure class="video-item">
-            <video controls loop="true" playsinline="" muted="true">
+    <div class="media-list">
+        <figure class="media-figure">
+            <video class="media-figure__bg" loop="true" playsinline="" muted="true" controls >
                 <source src="./videos/test-video.mp4" type="video/mp4">
             </video>
         </figure>
-        <figure class="video-item">
-            <video controls loop="true" playsinline="" muted="true">
+        <figure class="media-figure">
+            <video class="media-figure__bg" loop="true" playsinline="" muted="true" controls >
                 <source src="./videos/test-video.mp4" type="video/mp4">
             </video>
         </figure>
     </div>
 
-    <div class="video-list">
-        <figure class="video-item">
-            <iframe src="https://player.vimeo.com/video/875642579?h=273c8d60f0&autoplay=1&loop=1" width="640" height="853" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    <div class="media-list">
+        <figure class="media-figure">
+            <iframe class="media-figure__bg" src="https://player.vimeo.com/video/875642579?h=273c8d60f0&autoplay=1&loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </figure>
-        <figure class="video-item">
-            <iframe src="https://player.vimeo.com/video/875645539?h=ab16447bd1&autoplay=1&loop=1" width="640" height="1138" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <figure class="media-figure">
+            <iframe class="media-figure__bg" src="https://player.vimeo.com/video/875645539?h=ab16447bd1&autoplay=1&loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </figure>
     </div>
     
@@ -37,7 +39,7 @@
     <script>
         $(document).ready(function () {
             // Way 1
-            // $('.video-item iframe').each(function(index, item){
+            // $('.media-figure iframe').each(function(index, item){
             //     const currentIframe = item.contentWindow
             //     console.log(currentIframe);
             //     $(this).on('mouseover', function () {
@@ -48,7 +50,7 @@
             //     })
             // })
 
-            $('.video-item iframe').each(function(index, item){
+            $('.media-figure iframe').each(function(index, item){
                 $(this).on('mouseover', ()=> {
                     $(this).vimeo("play");
                 })
@@ -57,13 +59,15 @@
                 })
             })
 
-            $('.video-item video').each(function(index, item){
+            $('.media-figure video').each(function(index, item){
                 $(this).on('mouseover', ()=> {
                     $(this).get(0).play()
+                    $(this).get(0).autoplay = true
                     $(this).get(0).muted = false
                 })
                 $(this).on('mouseout', ()=> {
                     $(this).get(0).pause()
+                    $(this).get(0).autoplay = false
                     $(this).get(0).muted = true
                 })
             })
