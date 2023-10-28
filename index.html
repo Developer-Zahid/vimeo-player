@@ -42,10 +42,10 @@
             // Way 2
             $('.media-figure').each(function(index, item){
                 const currentIframeElement = $(this).find('iframe')
-                $(this).on('mouseover', ()=> {
+                $(this).on('mouseover touchstart', ()=> {
                     currentIframeElement.vimeo("play");
                 })
-                $(this).on('mouseout', ()=> {
+                $(this).on('mouseout touchend', ()=> {
                     currentIframeElement.vimeo("pause");
                 })
             })

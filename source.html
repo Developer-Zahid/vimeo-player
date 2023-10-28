@@ -45,15 +45,14 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
-            // Way 3
             $('.media-figure').each(function(index, item){
                 const currentVideoElement = $(this).find('video').get(0)
-                $(this).on('mouseover', ()=> {
+                $(this).on('mouseover touchstart', ()=> {
                     currentVideoElement.autoplay = true
                     currentVideoElement.play()
                     currentVideoElement.muted = false
                 })
-                $(this).on('mouseout', ()=> {
+                $(this).on('mouseout touchend', ()=> {
                     currentVideoElement.autoplay = false
                     currentVideoElement.muted = true
                     currentVideoElement.pause()

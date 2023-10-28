@@ -40,8 +40,14 @@ nav a.active{
     mask-repeat: no-repeat;
     display: inline-block;
     width: 360px;
-    padding-top: 40%;
+    padding-top: 140%;
     overflow: hidden;
+}
+
+@media (min-width: 800px) {
+    .media-figure{
+        padding-top: 40%;
+    }
 }
 
 .media-figure .media-figure__bg{
@@ -56,3 +62,4 @@ nav a.active{
     user-select: none;
     pointer-events: none;
 }
+
